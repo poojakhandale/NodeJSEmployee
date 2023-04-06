@@ -30,15 +30,18 @@ let totalWorkingDays = 0;
 
 let empDailyWageArray = new Array();
 
+let empMap = new Map();
+
 while (totalEmpHrs <= MAX_HRS && totalWorkingDays < NUMBER_WORKING_DAYS) {
   totalWorkingDays++;
   let emp_check = Math.floor(Math.random() * 10) % 3;
   empHrs = getWorkingHours(emp_check);
   totalEmpHrs += empHrs;
   empDailyWageArray.push(calculateDailyWage(empHrs));
+  empMap.set(totalWorkingDays, calculateDailyWage(empHrs));
 }
 
-console.log(empDailyWageArray);
+console.log(empMap);
 
 let empWage = calculateDailyWage(totalEmpHrs);
 console.log("Wage for the month: " + empWage);
